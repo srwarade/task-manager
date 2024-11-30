@@ -5,7 +5,7 @@ import CreateTaskModal from "../CreateTaskModal";
 
 import "./task-header.scss";
 
-const TaskHeader = ({ setFilterOption, setSearchTerm }) => {
+const TaskHeader = ({ setFilterOption, setSearchTerm, setSortBy }) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -24,9 +24,24 @@ const TaskHeader = ({ setFilterOption, setSearchTerm }) => {
         </select>
         <SearchContainer setSearchTerm={setSearchTerm} />
       </div>
-      <button className="create-task-button" onClick={() => setShowModal(true)}>
-        + Create Task
-      </button>
+      <div className="right-container">
+        <span className="sort-by">Sort By:</span>
+        <select
+          onChange={(e) => {
+            setSortBy && setSortBy(e.target.value);
+          }}
+        >
+          <option value="">None</option>
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+        <button
+          className="create-task-button"
+          onClick={() => setShowModal(true)}
+        >
+          + Create Task
+        </button>
+      </div>
       <CreateTaskModal
         showModal={showModal}
         setShowModal={setShowModal}

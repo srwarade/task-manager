@@ -14,28 +14,28 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Card className="task-card">
+      <Card className="dashboard-task-card">
         <div className="task-status-heading">Total Tasks</div>
         <div className="count-and-sign">
           <span className="task-count">{taskList.length}</span>
           <span className="task-color"></span>
         </div>
       </Card>
-      <Card className="task-card">
+      <Card className="dashboard-task-card">
         <div className="task-status-heading">Pending Tasks</div>
         <div className="count-and-sign">
           <span className="task-count">{pendingTasks.length}</span>
           <span className="task-color pending"></span>
         </div>
       </Card>
-      <Card className="task-card">
+      <Card className="dashboard-task-card">
         <div className="task-status-heading">Completed Tasks</div>
         <div className="count-and-sign">
           <span className="task-count">{completedTasks.length}</span>
           <span className="task-color completed"></span>
         </div>
       </Card>
-      <Card className="task-card">
+      <Card className="dashboard-task-card">
         <div className="task-status-heading">Tasks In Progress</div>
         <div className="count-and-sign">
           <span className="task-count">{inProgressTasks.length}</span>

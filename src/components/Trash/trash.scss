@@ -15,11 +15,14 @@
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 20px);
+    max-width: 100% !important;
 
     .task-details {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       align-items: center;
       gap: 20px;
+
       .task-color {
         width: 24px;
         height: 24px;
@@ -57,16 +60,34 @@
       }
     }
 
-    .delete-button {
-      background-color: #dc3545;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 4px;
-      border: none;
-      cursor: pointer;
+    .cta-container {
+      display: flex;
+      gap: 20px;
 
-      &:hover {
-        background-color: #c82333;
+      .restore-button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+
+      .delete-button {
+        background-color: #dc3545;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #c82333;
+        }
       }
     }
   }

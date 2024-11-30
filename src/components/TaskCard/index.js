@@ -10,10 +10,9 @@ const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+
   const date = new Date(taskDetails.dueDate);
-  const formattedDate = `${date.toDateString()} ${
-    date.toTimeString().split(" ")[0]
-  }`;
+  const formattedDate = `${date.toDateString()}`;
 
   const { taskList, setTaskList, setDeletedTasksList } =
     useContext(TasksContext);
@@ -66,15 +65,17 @@ const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
       >
         <div className="task-title">
           {taskDetails.title}
-          <span className={`task-priority ${taskDetails.priority}`}>
-            {taskDetails.priority}
+          <span className={`task-status ${taskDetails.status}`}>
+            {taskDetails.status}
           </span>
         </div>
         <div className="task-description">{taskDetails.description}</div>
-        <div className={`task-status ${taskDetails.status}`}>
-          {taskDetails.status}
+        <div className="task-status-date">
+          <span className={`task-priority ${taskDetails.priority}`}>
+            {taskDetails.priority}
+          </span>
+          <div className="task-due-date">{formattedDate}</div>
         </div>
-        <div className="task-due-date">{formattedDate}</div>
 
         <div className="cta-container">
           <button
