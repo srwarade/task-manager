@@ -6,7 +6,7 @@ import TasksContext from "../../common/context/TasksContext";
 
 import "./task-card.scss";
 
-const TaskCard = ({ taskDetails }) => {
+const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
@@ -27,9 +27,43 @@ const TaskCard = ({ taskDetails }) => {
     setTaskList(updatedTaskList);
   };
 
+  const handleDragStart = () => {
+    dragCard.current = taskDetails.id;
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    dragOverCard.current = taskDetails.id;
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const draggedTaskId = dragCard.current;
+    const overTaskId = dragOverCard.current;
+
+    const draggedTask = taskList.find((task) => task.id === draggedTaskId);
+    const overTask = taskList.find((task) => task.id === overTaskId);
+
+    const updatedTaskList = taskList.filter(
+      (task) => task.id !== draggedTaskId
+    );
+
+    const overTaskIndex = taskList.indexOf(overTask);
+    updatedTaskList.splice(overTaskIndex, 0, draggedTask);
+
+    setTaskList(updatedTaskList);
+  };
+
   return (
     <>
-      <Card key={taskDetails.id} className="task-card">
+      <Card
+        key={taskDetails.id}
+        className="task-card"
+        draggable
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
         <div className="task-title">
           {taskDetails.title}
           <span className={`task-priority ${taskDetails.priority}`}>

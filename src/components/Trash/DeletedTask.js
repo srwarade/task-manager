@@ -21,12 +21,16 @@ const DeletedTask = ({ taskDetails }) => {
       <Card className="deleted-task">
         <div className="task-details">
           <span className={`task-color ${taskDetails.status}`}></span>
-          <div className="task-title">{taskDetails.title}</div>
-          <div className="task-description">{taskDetails.description}</div>
+          <span className="task-title">{taskDetails.title}</span>
+          <span className="task-description">{taskDetails.description}</span>
+          <span className="task-date">{taskDetails.dueDate}</span>
+          <span className={`task-status ${taskDetails.status}`}>
+            {taskDetails.status}
+          </span>
         </div>
         <div className="cta-container">
           <button
-            className="confirm-button"
+            className="delete-button"
             onClick={() => setShowDeleteModal(true)}
           >
             Delete

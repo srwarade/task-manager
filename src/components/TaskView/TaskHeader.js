@@ -25,7 +25,7 @@ const TaskHeader = ({ setFilterOption, setSearchTerm }) => {
         <SearchContainer setSearchTerm={setSearchTerm} />
       </div>
       <button className="create-task-button" onClick={() => setShowModal(true)}>
-        Create Task
+        + Create Task
       </button>
       <CreateTaskModal
         showModal={showModal}

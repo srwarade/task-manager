@@ -2,9 +2,9 @@ import React from "react";
 
 import "./card.scss";
 
-const Card = ({ children, className }) => {
+const Card = ({ children, className, ...props }) => {
   return (
-    <article className={`card ${className}`} draggable>
+    <article className={`card ${className}`} {...props}>
       {children}
     </article>
   );

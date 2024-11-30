@@ -38,6 +38,36 @@
           background-color: #28a745;
         }
       }
+
+      .task-status {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        border-radius: 12px;
+        padding: 4px 8px;
+        &.pending {
+          background-color: #007bff;
+        }
+        &.in-progress {
+          background-color: #ffc107;
+        }
+        &.completed {
+          background-color: #28a745;
+        }
+      }
+    }
+
+    .delete-button {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c82333;
+      }
     }
   }
 }
