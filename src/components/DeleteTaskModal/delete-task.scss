@@ -1,0 +1,37 @@
+.delete-confirmation-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .delete-confirmation-actions {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+    .cancel-button {
+      background-color: #d2d2d2;
+      color: #000;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c2c2c2;
+      }
+    }
+
+    .confirm-button {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+}

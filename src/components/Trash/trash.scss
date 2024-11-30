@@ -1,0 +1,43 @@
+.deleted-task-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .deleted-task-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #3c3c3c;
+  }
+
+  .deleted-task {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+
+    .task-details {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .task-color {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #3c3c3c;
+
+        &.pending {
+          background-color: #007bff;
+        }
+
+        &.in-progress {
+          background-color: #ffc107;
+        }
+
+        &.completed {
+          background-color: #28a745;
+        }
+      }
+    }
+  }
+}

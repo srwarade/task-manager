@@ -1,0 +1,34 @@
+.sidebar-wrapper {
+  width: 260px;
+  height: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  z-index: 100;
+  padding: 20px;
+  box-shadow: 2px 10px 8px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 40px;
+
+  .sidebar-button {
+    background-color: transparent;
+    color: #3c3c3c;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    text-align: start;
+    cursor: pointer;
+
+    &.selected {
+      background-color: #007bff;
+      color: #fff;
+    }
+    &:hover {
+      background-color: #80bdff;
+      color: #fff;
+    }
+  }
+}

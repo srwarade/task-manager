@@ -1,0 +1,48 @@
+.dashboard {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  .task-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .task-status-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: #636363;
+    }
+
+    .count-and-sign {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .task-count {
+        font-size: 20px;
+        font-weight: 600;
+        color: #3c3c3c;
+      }
+
+      .task-color {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: #3c3c3c;
+
+        &.pending {
+          background-color: #007bff;
+        }
+
+        &.in-progress {
+          background-color: #ffc107;
+        }
+
+        &.completed {
+          background-color: #28a745;
+        }
+      }
+    }
+  }
+}
