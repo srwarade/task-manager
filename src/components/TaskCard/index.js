@@ -92,7 +92,11 @@ const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
             className="delete-task-button"
             onClick={() => setShowDeleteModal(true)}
           >
-            <img src="/images/bin.svg" alt="delete" className="delete-icon" />
+            <img
+              src="/images/delete.svg"
+              alt="delete"
+              className="delete-icon"
+            />
             Delete
           </button>
         </div>

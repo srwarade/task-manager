@@ -15,20 +15,51 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
     width: calc(100% - 20px);
     max-width: 100% !important;
 
+    @include adjust-with("md") {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .details-conatiner {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .task-color {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #3c3c3c;
+
+      &.pending {
+        background-color: #007bff;
+      }
+
+      &.in-progress {
+        background-color: #ffc107;
+      }
+
+      &.completed {
+        background-color: #28a745;
+      }
+    }
+
     .task-details {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
       gap: 12px;
 
       @include adjust-with("lg") {
         gap: 20px;
-        grid-template-columns: repeat(5, 1fr);
       }
 
       .task-title {
@@ -41,25 +72,6 @@
         font-size: 14px;
         font-weight: 600;
         color: #636363;
-      }
-
-      .task-color {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background-color: #3c3c3c;
-
-        &.pending {
-          background-color: #007bff;
-        }
-
-        &.in-progress {
-          background-color: #ffc107;
-        }
-
-        &.completed {
-          background-color: #28a745;
-        }
       }
 
       .task-status {
@@ -87,17 +99,27 @@
       .restore-button {
         background-color: #007bff;
         color: #fff;
-        padding: 8px 16px;
+        padding: 8px 12px;
         border-radius: 4px;
         border: none;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
 
         &:hover {
           background-color: #0056b3;
         }
+
+        .restore-icon {
+          width: 16px;
+        }
       }
 
       .delete-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
         background-color: #dc3545;
         color: #fff;
         padding: 8px 16px;
@@ -107,6 +129,10 @@
 
         &:hover {
           background-color: #c82333;
+        }
+
+        .delete-icon {
+          width: 18px;
         }
       }
     }

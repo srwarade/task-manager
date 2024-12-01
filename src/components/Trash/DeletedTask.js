@@ -34,22 +34,34 @@ const DeletedTask = ({ taskDetails }) => {
   return (
     <>
       <Card className="deleted-task">
-        <div className="task-details">
-          <span className={`task-color ${taskDetails.status}`}></span>
-          <span className="task-title">{taskDetails.title}</span>
-          <span className="task-date">{formattedDate}</span>
-          <span className={`task-status ${taskDetails.status}`}>
-            {taskDetails.status}
-          </span>
+        <div className="details-conatiner">
+          <div className={`task-color ${taskDetails.status}`}></div>
+          <div className="task-details">
+            <span className="task-title">{taskDetails.title}</span>
+            <span className="task-date">{formattedDate}</span>
+            <span className={`task-status ${taskDetails.status}`}>
+              {taskDetails.status}
+            </span>
+          </div>
         </div>
         <div className="cta-container">
           <button className="restore-button" onClick={handleRestore}>
+            <img
+              src="/images/restore.png"
+              alt="restore"
+              className="restore-icon"
+            />
             Restore
           </button>
           <button
             className="delete-button"
             onClick={() => setShowDeleteModal(true)}
           >
+            <img
+              src="/images/delete.svg"
+              alt="delete"
+              className="delete-icon"
+            />
             Delete
           </button>
         </div>

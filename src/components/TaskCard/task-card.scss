@@ -123,6 +123,7 @@
 
     .delete-task-button {
       display: flex;
+      gap: 4px;
       align-items: center;
       justify-content: center;
       min-width: fit-content;
@@ -136,7 +137,7 @@
       cursor: pointer;
 
       .delete-icon {
-        width: 28px;
+        width: 18px;
       }
 
       &:hover {

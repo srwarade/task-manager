@@ -1,12 +1,24 @@
+@import "../../styles/breakpoints.scss";
+
 .dashboard {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  width: 100%;
+
+  @include adjust-with("lg") {
+    width: fit-content;
+  }
 
   .dashboard-task-card {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: calc(100% - 20px);
+
+    @include adjust-with("lg") {
+      width: fit-content;
+    }
 
     .task-status-heading {
       font-size: 20px;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchContainer from "../common/SearchContainer";
 
 import CreateTaskModal from "../CreateTaskModal";
+import { TASK_STATUS } from "../../common/constants";
 
 import "./task-header.scss";
 
@@ -18,9 +19,11 @@ const TaskHeader = ({ setFilterOption, setSearchTerm, setSortBy }) => {
           }}
         >
           <option value="">All</option>
-          <option value="pending">Pending</option>
-          <option value="completed">Completed</option>
-          <option value="in-progress">In Progress</option>
+          {TASK_STATUS.map((status) => (
+            <option key={status.value} value={status.value}>
+              {status.label}
+            </option>
+          ))}
         </select>
         <SearchContainer setSearchTerm={setSearchTerm} />
       </div>

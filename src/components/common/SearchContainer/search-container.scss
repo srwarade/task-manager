@@ -1,6 +1,13 @@
+@import "../../../styles/breakpoints.scss";
+
 .search-container {
   height: 36px;
 
+  width: calc(100% - 40px);
+
+  @include adjust-with("md") {
+    width: fit-content;
+  }
   .search-box {
     background-color: #fff;
     border: solid 1px #000;
