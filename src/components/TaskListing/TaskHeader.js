@@ -35,8 +35,8 @@ const TaskHeader = ({ setFilterOption, setSearchTerm, setSortBy }) => {
           }}
         >
           <option value="">None</option>
-          <option value="ascending">Ascending</option>
-          <option value="descending">Descending</option>
+          <option value="ascending">Due Date : Ascending</option>
+          <option value="descending">Due Date : Descending</option>
         </select>
         <button
           className="create-task-button"

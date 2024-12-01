@@ -55,57 +55,69 @@ const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
 
   return (
     <>
-      <Card
-        key={taskDetails.id}
-        className="task-card"
-        draggable
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDrop={handleDrop}
+      <a
+        href={`/tasks/${taskDetails.id}`}
+        className="task-anchor"
+        id={taskDetails.id}
       >
-        <div className="task-title">
-          {taskDetails.title}
-          <span className={`task-status ${taskDetails.status}`}>
-            {taskDetails.status}
-          </span>
-        </div>
-        <div className="task-description">{taskDetails.description}</div>
-        <div className="task-status-date">
-          <span className={`task-priority ${taskDetails.priority}`}>
-            <img
-              src={`/images/priority/${taskDetails.priority}.png`}
-              alt="priority"
-              className="priority-icon"
-            />
-            {taskDetails.priority}
-          </span>
-          <div className="task-due-date">{formattedDate}</div>
-        </div>
+        <Card
+          key={taskDetails.id}
+          className="task-card"
+          draggable
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+        >
+          <div className="task-title">
+            {taskDetails.title}
+            <span className={`task-status ${taskDetails.status}`}>
+              {taskDetails.status}
+            </span>
+          </div>
+          <div className="task-status-date">
+            <span className={`task-priority ${taskDetails.priority}`}>
+              <img
+                src={`/images/priority/${taskDetails.priority}.png`}
+                alt="priority"
+                className="priority-icon"
+              />
+              {taskDetails.priority}
+            </span>
+            <div className="task-due-date">{formattedDate}</div>
+          </div>
+          <div className="task-description" title={taskDetails.description}>
+            {taskDetails.description}
+          </div>
 
-        <div className="cta-container">
-          <button
-            className="edit-task-button"
-            onClick={() => {
-              setShowEditModal(true);
-              setIsEditing(true);
-            }}
-          >
-            <img src="/images/edit.svg" alt="edit" className="edit-icon" />
-            Edit
-          </button>
-          <button
-            className="delete-task-button"
-            onClick={() => setShowDeleteModal(true)}
-          >
-            <img
-              src="/images/delete.svg"
-              alt="delete"
-              className="delete-icon"
-            />
-            Delete
-          </button>
-        </div>
-      </Card>
+          <div className="cta-container">
+            <button
+              className="edit-task-button"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowEditModal(true);
+                setIsEditing(true);
+              }}
+            >
+              <img src="/images/edit.svg" alt="edit" className="edit-icon" />
+              Edit
+            </button>
+            <button
+              className="delete-task-button"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowDeleteModal(true);
+              }}
+            >
+              <img
+                src="/images/delete.svg"
+                alt="delete"
+                className="delete-icon"
+              />
+              Delete
+            </button>
+          </div>
+        </Card>
+      </a>
       <CreateTaskModal
         showModal={showEditModal}
         setShowModal={setShowEditModal}

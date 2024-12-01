@@ -1,61 +1,39 @@
-import React, { useContext, useRef, useState } from "react";
-import TaskHeader from "./TaskHeader";
-import TaskCard from "../TaskCard";
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
+
 import TasksContext from "../../common/context/TasksContext";
 
 import "./task-view.scss";
 
 const TaskView = () => {
+  const { id } = useParams();
   const { taskList } = useContext(TasksContext);
-  const [filterOption, setFilterOption] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("");
 
-  const dragCard = useRef(0);
-  const dragOverCard = useRef(0);
+  const taskData = taskList.find((task) => task.id === id);
 
-  const filteredList = filterOption
-    ? taskList.filter((task) => task.status === filterOption)
-    : taskList;
-
-  const filteredListBySearch = filteredList.filter(
-    (task) =>
-      task.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      task.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const sortedList = filteredListBySearch.sort((a, b) => {
-    if (sortBy === "ascending") {
-      return new Date(a.dueDate) - new Date(b.dueDate);
-    }
-    if (sortBy === "descending") {
-      return new Date(b.dueDate) - new Date(a.dueDate);
-    }
-    return 0;
-  });
+  const date = new Date(taskData.dueDate);
+  const formattedDate = `${date.toDateString()}`;
 
   return (
-    <>
-      <TaskHeader
-        setFilterOption={setFilterOption}
-        setSearchTerm={setSearchTerm}
-        setSortBy={setSortBy}
-      />
-      <section className="task-list-container">
-        {sortedList.length > 0 ? (
-          sortedList?.map((task) => (
-            <TaskCard
-              taskDetails={task}
-              key={task.id}
-              dragCard={dragCard}
-              dragOverCard={dragOverCard}
-            />
-          ))
-        ) : (
-          <div className="no-tasks">No task found</div>
-        )}
-      </section>
-    </>
+    <section className="task-view-wrapper">
+      <span className="label">Title : </span>
+      <div className="title">{taskData.title}</div>
+      <span className="label">Description :</span>
+      <div className="description">{taskData.description}</div>
+      <span className="label">Priority: </span>
+      <span className={`priority ${taskData.priority}`}>
+        <img
+          src={`/images/priority/${taskData.priority}.png`}
+          alt={taskData.priority}
+          className="priority-icon"
+        />
+        {taskData.priority}
+      </span>
+      <span className="label">Status:</span>
+      <div className={`status ${taskData.status}`}>{taskData.status}</div>
+      <span className="label">Due Date:</span>
+      <div className="due-date">{formattedDate}</div>
+    </section>
   );
 };
 

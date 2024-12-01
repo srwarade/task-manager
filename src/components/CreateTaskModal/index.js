@@ -115,23 +115,24 @@ const CreateTaskModal = ({
                 )}
               </div>
               <div className="input-wrapper">
-                <label htmlFor="task-description">Description</label>
-                <input type="text" id="task-description" ref={descriptionRef} />
+                <label htmlFor="task-due-date">Due date</label>
+                <input
+                  type="date"
+                  id="task-due-date"
+                  ref={dueDateRef}
+                  required
+                  {...(error.label === "dueDate" && { className: "error" })}
+                />
+                {error.label === "dueDate" && (
+                  <div className="error-text">{error.message}</div>
+                )}
               </div>
             </div>
             <div className="input-wrapper">
-              <label htmlFor="task-due-date">Due date</label>
-              <input
-                type="date"
-                id="task-due-date"
-                ref={dueDateRef}
-                required
-                {...(error.label === "dueDate" && { className: "error" })}
-              />
-              {error.label === "dueDate" && (
-                <div className="error-text">{error.message}</div>
-              )}
+              <label htmlFor="task-description">Description</label>
+              <textarea id="task-description" ref={descriptionRef} />
             </div>
+
             <div className="input-groups">
               <div className="input-wrapper">
                 <label htmlFor="task-status">Status</label>

@@ -1,11 +1,12 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Sidebar from "../Sidebar";
 import Header from "../common/Header";
+import Sidebar from "../Sidebar";
 import MainContainer from "../MainContainer";
-import TaskView from "../TaskView";
 import Dashboard from "../Dashboard";
+import TaskList from "../TaskListing";
+import TaskView from "../TaskView";
 import Trash from "../Trash";
 
 const appRouter = createBrowserRouter([
@@ -19,6 +20,10 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/tasks",
+        element: <TaskList />,
+      },
+      {
+        path: "/tasks/:id",
         element: <TaskView />,
       },
       {
