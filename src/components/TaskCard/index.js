@@ -72,6 +72,11 @@ const TaskCard = ({ taskDetails, dragCard, dragOverCard }) => {
         <div className="task-description">{taskDetails.description}</div>
         <div className="task-status-date">
           <span className={`task-priority ${taskDetails.priority}`}>
+            <img
+              src={`/images/priority/${taskDetails.priority}.png`}
+              alt="priority"
+              className="priority-icon"
+            />
             {taskDetails.priority}
           </span>
           <div className="task-due-date">{formattedDate}</div>

@@ -42,14 +42,18 @@ const TaskView = () => {
         setSortBy={setSortBy}
       />
       <section className="task-list-container">
-        {sortedList?.map((task) => (
-          <TaskCard
-            taskDetails={task}
-            key={task.id}
-            dragCard={dragCard}
-            dragOverCard={dragOverCard}
-          />
-        ))}
+        {sortedList.length > 0 ? (
+          sortedList?.map((task) => (
+            <TaskCard
+              taskDetails={task}
+              key={task.id}
+              dragCard={dragCard}
+              dragOverCard={dragOverCard}
+            />
+          ))
+        ) : (
+          <div className="no-tasks">No task found</div>
+        )}
       </section>
     </>
   );

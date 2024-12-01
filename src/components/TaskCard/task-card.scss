@@ -25,6 +25,8 @@
     gap: 4px;
     padding: 4px 8px;
     border-radius: 4px;
+    display: flex;
+    align-items: center;
 
     &.low {
       color: #007bff;
@@ -44,6 +46,10 @@
     &.highest {
       color: #dc3545;
       border: solid 1px #dc3545;
+    }
+
+    .priority-icon {
+      width: 12px;
     }
   }
 

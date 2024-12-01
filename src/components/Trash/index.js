@@ -7,9 +7,13 @@ const Trash = () => {
   return (
     <section className="deleted-task-wrapper">
       <div className="deleted-task-heading">Deleted Tasks</div>
-      {deletedTasksList.map((task) => (
-        <DeletedTask key={task.id} taskDetails={task} />
-      ))}
+      {deletedTasksList.length > 0 ? (
+        deletedTasksList.map((task) => (
+          <DeletedTask key={task.id} taskDetails={task} />
+        ))
+      ) : (
+        <div>No Record</div>
+      )}
     </section>
   );
 };

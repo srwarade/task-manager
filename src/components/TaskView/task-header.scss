@@ -9,7 +9,7 @@
     display: flex;
     gap: 24px;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
 
     .task-heading {
       font-size: 20px;
