@@ -8,7 +8,9 @@ const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <header>
-      <span className="title">Task Manager</span>
+      <a href="/" className="logo">
+        <span className="title">Task Manager</span>
+      </a>
       <img
         src="/images/menu.svg"
         alt="task"

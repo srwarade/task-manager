@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints.scss";
+
 .task-view-wrapper {
   width: calc(100% - 40px);
   margin: 0 auto;
@@ -6,9 +8,13 @@
   border-radius: 12px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: 160px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 20px;
   align-items: center;
+
+  @include adjust-with("lg") {
+    grid-template-columns: 160px 1fr;
+  }
 
   .label {
     font-size: 16px;

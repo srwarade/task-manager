@@ -17,6 +17,10 @@ header {
   align-items: center;
   justify-content: space-between;
 
+  .logo {
+    text-decoration: none;
+  }
+
   .title {
     font-size: 20px;
     font-weight: 800;
