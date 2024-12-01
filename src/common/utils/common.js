@@ -3,5 +3,17 @@ export const generateRandomId = () => {
 };
 
 export const checkIfDetailsExists = (title, dueDate) => {
-  return title && dueDate;
+  if (!title) {
+    return {
+      label: "title",
+      message: "Title is required",
+    };
+  } else if (!dueDate) {
+    return {
+      label: "dueDate",
+      message: "Due date is required",
+    };
+  }
+
+  return false;
 };

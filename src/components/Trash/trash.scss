@@ -1,3 +1,5 @@
+@import "../../styles/breakpoints.scss";
+
 .deleted-task-wrapper {
   display: flex;
   flex-direction: column;
@@ -12,6 +14,7 @@
   .deleted-task {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 20px);
@@ -19,9 +22,26 @@
 
     .task-details {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       align-items: center;
-      gap: 20px;
+      gap: 12px;
+
+      @include adjust-with("lg") {
+        gap: 20px;
+        grid-template-columns: repeat(5, 1fr);
+      }
+
+      .task-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #3c3c3c;
+      }
+
+      .task-date {
+        font-size: 14px;
+        font-weight: 600;
+        color: #636363;
+      }
 
       .task-color {
         width: 24px;

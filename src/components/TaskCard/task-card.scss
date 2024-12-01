@@ -4,6 +4,7 @@
   flex-grow: 1;
   gap: 16px;
   height: 180px;
+  width: 320px;
   position: relative;
 
   .task-title {
@@ -15,6 +16,7 @@
     padding-bottom: 12px;
     border-bottom: solid 1px #d2d2d2;
   }
+
   .task-priority {
     font-size: 12px;
     font-weight: 600;

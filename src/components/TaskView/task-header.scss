@@ -1,12 +1,15 @@
 .task-header-wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
   margin-bottom: 20px;
 
   .header {
     display: flex;
     gap: 24px;
     align-items: center;
+    flex-wrap: wrap;
 
     .task-heading {
       font-size: 20px;

@@ -1,8 +1,16 @@
+@import "../../styles/breakpoints.scss";
+
 .main-container {
   background-color: #f5f5f5;
-  padding: 40px;
+  padding: 20px;
   box-sizing: border-box;
   position: relative;
-  left: 300px;
-  width: calc(100% - 300px);
+  left: 0;
+  width: 100%;
+
+  @include adjust-with("lg") {
+    padding: 40px;
+    left: 300px;
+    width: calc(100% - 300px);
+  }
 }

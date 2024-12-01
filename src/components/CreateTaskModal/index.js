@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Modal from "../common/Modal";
 import TasksContext from "../../common/context/TasksContext";
 import {
   checkIfDetailsExists,
   generateRandomId,
 } from "../../common/utils/common";
+import { TASK_PRIORITY, TASK_STATUS } from "../../common/constants";
 
 import "./create-task.scss";
 
@@ -21,13 +22,18 @@ const CreateTaskModal = ({
   const statusRef = useRef();
   const dueDateRef = useRef();
   const priorityRef = useRef();
+  const [error, setError] = useState({ label: "", message: "" });
 
   const handleCreateTask = () => {
-    if (
-      !checkIfDetailsExists(titleRef.current.value, dueDateRef.current.value)
-    ) {
+    const checkIfError = checkIfDetailsExists(
+      titleRef.current.value,
+      dueDateRef.current.value
+    );
+    if (checkIfError) {
+      setError(checkIfError);
       return;
     }
+    setError({ label: "", message: "" });
     const newTask = {
       id: generateRandomId(),
       title: titleRef.current.value,
@@ -59,11 +65,15 @@ const CreateTaskModal = ({
   }, [isEditing, taskDetails]);
 
   const handleTaskEditing = () => {
-    if (
-      !checkIfDetailsExists(titleRef.current.value, dueDateRef.current.value)
-    ) {
+    const checkIfError = checkIfDetailsExists(
+      titleRef.current.value,
+      dueDateRef.current.value
+    );
+    if (checkIfError) {
+      setError(checkIfError);
       return;
     }
+    setError({ label: "", message: "" });
     const updatedTaskList = taskList.map((task) => {
       if (task.id === taskDetails.id) {
         return {
@@ -93,7 +103,16 @@ const CreateTaskModal = ({
             <div className="input-groups">
               <div className="input-wrapper">
                 <label htmlFor="task-title"> Title</label>
-                <input type="text" id="task-title" ref={titleRef} required />
+                <input
+                  type="text"
+                  id="task-title"
+                  ref={titleRef}
+                  required
+                  {...(error.label === "title" && { className: "error" })}
+                />
+                {error.label === "title" && (
+                  <div className="error-text">{error.message}</div>
+                )}
               </div>
               <div className="input-wrapper">
                 <label htmlFor="task-description">Description</label>
@@ -103,28 +122,35 @@ const CreateTaskModal = ({
             <div className="input-wrapper">
               <label htmlFor="task-due-date">Due date</label>
               <input
-                type="datetime-local"
+                type="date"
                 id="task-due-date"
                 ref={dueDateRef}
                 required
+                {...(error.label === "dueDate" && { className: "error" })}
               />
+              {error.label === "dueDate" && (
+                <div className="error-text">{error.message}</div>
+              )}
             </div>
             <div className="input-groups">
               <div className="input-wrapper">
                 <label htmlFor="task-status">Status</label>
                 <select ref={statusRef} id="task-status">
-                  <option value="pending">Pending</option>
-                  <option value="in-progress">In Progress</option>
-                  <option value="completed">Completed</option>
+                  {TASK_STATUS.map((status) => (
+                    <option key={status.value} value={status.value}>
+                      {status.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="input-wrapper">
                 <label htmlFor="task-priority">Priority</label>
                 <select ref={priorityRef} id="task-priority">
-                  <option value="low">Low</option>
-                  <option value="medium">Medium</option>
-                  <option value="high">High</option>
-                  <option value="highest">Highest</option>
+                  {TASK_PRIORITY.map((priority) => (
+                    <option key={priority.value} value={priority.value}>
+                      {priority.label}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
